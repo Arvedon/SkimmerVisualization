@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#235d54">
+<title>DM · Skimmer Studio</title>
+<link rel="icon" href="assets/dm-cube.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script src="model.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<main id="app">
+  <header>
+    <div class="brand"><img src="assets/dm-cube.svg" alt="" width="48" height="40"><strong>DM</strong><span class="divider"></span><div><h1>Skimmer Studio</h1><p>Draw it. Fold it. Build it.</p></div></div>
+    <button id="full" class="quiet">Full screen ↗</button>
+  </header>
+  <div class="workspace">
+    <section class="viewport" aria-label="Interactive skimmer">
+      <div class="view-tools"><button id="camera">Reset view</button><button id="top">Paper view</button><span id="zoomStatus">100%</span></div>
+      <canvas id="view" tabindex="0" aria-label="3D skimmer. Drag to rotate freely; scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, R resets."></canvas>
+      <div class="view-hint">Drag to turn · scroll or pinch to zoom</div>
+      <div id="graphicsStatus" role="status"></div>
+    </section>
+    <aside>
+      <nav class="chapters" aria-label="Construction phase"><button id="drawChapter" class="active">1 · Draw</button><button id="assembleChapter">2 · Assemble</button></nav>
+      <div class="step-info" aria-live="polite" aria-atomic="true">
+        <p id="stepNumber" class="eyebrow"></p><h2 id="stepTitle"></h2><p id="instruction"></p>
+        <div id="measurement" class="measurement"></div>
+      </div>
+      <div class="units" role="group" aria-label="Measurement units"><button id="imperial" aria-pressed="true">Inches</button><button id="metric" aria-pressed="false">Millimeters</button></div>
+      <p id="unitNote" class="small">Use the written dimensions, not the screen size.</p>
+      <div class="line-key" aria-label="Line styles"><span><i class="paper-line"></i>Paper edge</span><span><i class="cut-line"></i>Drawn cut</span><span><i class="fold-line"></i>Drawn fold</span><span><i class="dimension-line" aria-hidden="true">↔</i>Measurement</span></div>
+      <div class="legend"><span class="body">Main body + rails</span><span class="fins">Two air fins</span><span class="scoop">Air scoop</span></div>
+    </aside>
+  </div>
+  <footer>
+    <div class="timeline-row"><label for="time" class="sr-only">Construction timeline</label><input id="time" type="range" min="0" step="0.01" value="0"><span id="status"></span></div>
+    <div class="controls"><button id="back" aria-label="Previous step">← Previous</button><button class="primary" id="play">Play</button><button id="next" aria-label="Next step">Next →</button><button id="replay">Replay step</button><select id="stage" aria-label="Choose a construction step"></select><select id="speed" aria-label="Playback speed"><option value=".25">¼× speed</option><option value=".5">½× speed</option><option value="1" selected>1× speed</option><option value="2">2× speed</option></select><label class="pause"><input id="pauseSteps" type="checkbox" checked> Pause each step</label><button id="reset" class="quiet">Restart</button></div>
+    <p class="note">Fold angles and paper thickness are illustrative. Follow your teacher’s working model for attachment, glue drying, and launcher setup.</p>
+  </footer>
+</main>
+</body>
+</html>
